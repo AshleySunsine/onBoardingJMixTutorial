@@ -59,6 +59,7 @@
                 <comboBox id="onboardingStatusField" property="onboardingStatus"/>
                 <entityComboBox id="departmentField" property="department" optionsContainer="departmentsDc"/>
                 <dateField id="joiningDateField" property="joiningDate"/>
+                <fileStorageUpload id="pictureField" property="picture"/>
             </column>
         </form>
         <groupBox id="userStepBox" caption="msg://com.company.onboarding.entity/User.userStep">
@@ -73,10 +74,8 @@
                     <column id="step.name"/>
                     <column id="dueDate"/>
                     <column id="completedDate"/>
-
                 </columns>
                 <buttonsPanel>
-
                     <button id="generateButton" caption="Generate"/>
                 </buttonsPanel>
             </table>
