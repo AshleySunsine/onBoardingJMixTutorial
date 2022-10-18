@@ -1,9 +1,11 @@
 package com.company.onboarding.screen.user;
 
+import com.company.onboarding.entity.OnboardingStatus;
 import com.company.onboarding.entity.User;
 import io.jmix.core.EntityStates;
 import io.jmix.core.security.event.SingleUserPasswordChangeEvent;
 import io.jmix.ui.Notifications;
+import io.jmix.ui.component.Button;
 import io.jmix.ui.component.ComboBox;
 import io.jmix.ui.component.PasswordField;
 import io.jmix.ui.component.TextField;
@@ -55,6 +57,8 @@ public class UserEdit extends StandardEditor<User> {
         passwordField.setVisible(true);
         confirmPasswordField.setVisible(true);
         isNewEntity = true;
+        User user = event.getEntity();
+        user.setOnboardingStatus(OnboardingStatus.NOT_STARTED);
     }
 
     @Subscribe
@@ -87,5 +91,10 @@ public class UserEdit extends StandardEditor<User> {
     @Subscribe
     public void onInit(InitEvent event) {
         timeZoneField.setOptionsList(Arrays.asList(TimeZone.getAvailableIDs()));
+    }
+
+    @Subscribe("generateButton")
+    public void onGenerateButtonClick(Button.ClickEvent event) {
+        
     }
 }

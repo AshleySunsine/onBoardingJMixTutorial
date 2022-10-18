@@ -32,7 +32,11 @@
                 <textField id="nameField" property="name"/>
                 <entityPicker id="hrManagerField" property="hrManager">
                     <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityLookup" type="entity_lookup">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
