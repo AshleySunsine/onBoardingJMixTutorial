@@ -6,8 +6,10 @@
         <instance id="userDc"
                   class="com.company.onboarding.entity.User">
             <fetchPlan extends="_base">
-                <property name="department" fetchPlan="_base"/>
-                <property name="userStep" fetchPlan="_base"/>
+                <property fetchPlan="_base" name="department"/>
+                <property fetchPlan="_base" name="userStep">
+                    <property name="step" fetchPlan="_base"/>
+                </property>
             </fetchPlan>
             <loader/>
             <collection id="userStepDc" property="userStep"/>
@@ -67,10 +69,11 @@
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>
-                    <column id="version"/>
+                    <column id="completed" caption="" width="50px"/>
+                    <column id="step.name"/>
                     <column id="dueDate"/>
                     <column id="completedDate"/>
-                    <column id="sortValue"/>
+
                 </columns>
                 <buttonsPanel>
 

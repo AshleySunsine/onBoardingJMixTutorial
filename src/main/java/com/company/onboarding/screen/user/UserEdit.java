@@ -8,10 +8,8 @@ import io.jmix.core.DataManager;
 import io.jmix.core.EntityStates;
 import io.jmix.core.security.event.SingleUserPasswordChangeEvent;
 import io.jmix.ui.Notifications;
-import io.jmix.ui.component.Button;
-import io.jmix.ui.component.ComboBox;
-import io.jmix.ui.component.PasswordField;
-import io.jmix.ui.component.TextField;
+import io.jmix.ui.UiComponents;
+import io.jmix.ui.component.*;
 import io.jmix.ui.model.CollectionPropertyContainer;
 import io.jmix.ui.model.DataContext;
 import io.jmix.ui.navigation.Route;
@@ -19,6 +17,7 @@ import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -64,6 +63,9 @@ public class UserEdit extends StandardEditor<User> {
 
     @Autowired
     private CollectionPropertyContainer<UserStep> userStepDc;
+
+    @Autowired
+    private UiComponents uiComponents;
 
     @Subscribe
     public void onInitEntity(InitEntityEvent<User> event) {
@@ -128,5 +130,19 @@ public class UserEdit extends StandardEditor<User> {
                 userStepDc.getMutableItems().add(userStep);
             }
         }
+    }
+
+    @Install(to = "userStepTable.completed", subject = "columnGenerator")
+    private Component userStepTableCompletedColumnGenerator(UserStep userStep) {
+        CheckBox checkBox = uiComponents.create(CheckBox.class);
+        checkBox.setValue(userStep.getCompletedDate() != null);
+        checkBox.addValueChangeListener(e -> {
+            if (userStep.getCompletedDate() == null) {
+                userStep.setCompletedDate(LocalDate.now());
+            } else {
+                userStep.setCompletedDate(null);
+            }
+        });
+        return checkBox;
     }
 }
