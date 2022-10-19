@@ -4,11 +4,13 @@ import com.company.onboarding.entity.User;
 import com.company.onboarding.entity.UserStep;
 import io.jmix.core.security.CurrentAuthentication;
 import io.jmix.ui.UiComponents;
+import io.jmix.ui.component.Button;
 import io.jmix.ui.component.CheckBox;
 import io.jmix.ui.component.Component;
 import io.jmix.ui.component.Label;
 import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.model.CollectionLoader;
+import io.jmix.ui.model.DataContext;
 import io.jmix.ui.model.InstanceContainer;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,8 @@ public class MyOnboardingScreen extends Screen {
 
     @Autowired
     private Label totalStepsLabel;
+    @Autowired
+    private DataContext dataContext;
 
     @Subscribe(id = "userStepsDc", target = Target.DATA_CONTAINER)
     public void onUserStepsDcItemPropertyChange(InstanceContainer.ItemPropertyChangeEvent<UserStep> event) {
@@ -81,6 +85,25 @@ public class MyOnboardingScreen extends Screen {
         return us.getCompletedDate() == null
                 && us.getDueDate() != null
                 && us.getDueDate().isBefore(LocalDate.now());
+    }
+
+    @Subscribe("saveButton")
+    public void onSaveButtonClick(Button.ClickEvent event) {
+        dataContext.commit();
+        close(StandardOutcome.COMMIT);
+    }
+
+    @Subscribe("discardButton")
+    public void onDiscardButtonClick(Button.ClickEvent event) {
+        close(StandardOutcome.DISCARD);
+    }
+
+    @Install(to = "userStepsTable", subject = "styleProvider")
+    private String userStepsTableStyleProvider(UserStep entity, String property) {
+        if ("dueDate".equals(property) && isOverdue(entity)) {
+            return "overdue-step";
+        }
+        return null;
     }
 
 }

@@ -15,7 +15,7 @@
             </loader>
         </collection>
     </data>
-    <layout>
+    <layout expand="spacer">
         <vbox spacing="true">
             <label id="totalStepsLabel"/>
             <label id="completedStepsLabel"/>
@@ -30,5 +30,10 @@
                 <column id="completedDate"/>
             </columns>
         </table>
+        <hbox spacing="true">
+            <button id="saveButton" caption="Save" primary="true"/>
+            <button caption="Discard" id="discardButton"/>
+        </hbox>
+        <label id="spacer"/>
     </layout>
 </window>
