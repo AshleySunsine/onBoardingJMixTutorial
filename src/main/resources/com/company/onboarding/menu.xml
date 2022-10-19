@@ -3,12 +3,14 @@
 
     <menu id="application" caption="msg://com.company.onboarding/menu.application" insertBefore="administration">
         <item screen="MyOnboardingScreen"
-              caption="msg://com.company.onboarding.screen.myonboarding/myOnboardingScreen.caption"/>
-        <item screen="User.browse" caption="msg://com.company.onboarding.screen.user/UserBrowse.caption"/>
-        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
-        <item screen="Step.browse" caption="msg://com.company.onboarding.screen.step/stepBrowse.menu"/>
+              caption="msg://com.company.onboarding.screen.myonboarding/myOnboardingScreen.caption"
+              icon="font-icon:ASTERISK"/>
+        <item screen="User.browse" caption="msg://com.company.onboarding.screen.user/UserBrowse.caption" icon="GROUP"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"
+              icon="IMAGE"/>
+        <item screen="Step.browse" caption="msg://com.company.onboarding.screen.step/stepBrowse.menu" icon="HOTEL"/>
         <item screen="Department.browse"
-              caption="msg://com.company.onboarding.screen.department/departmentBrowse.menu"/>
+              caption="msg://com.company.onboarding.screen.department/departmentBrowse.menu" icon="USB"/>
     </menu>
 
 </menu-config>

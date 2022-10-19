@@ -22,17 +22,18 @@
             <label id="overdueStepsLabel"/>
         </vbox>
         <table id="userStepsTable" width="100%" height="400px"
-               dataContainer="userStepsDc">
+               dataContainer="userStepsDc" icon="font-icon:BANK">
             <columns>
                 <column id="completed" width="50"/>
                 <column id="step.name"/>
                 <column id="dueDate"/>
                 <column id="completedDate"/>
             </columns>
+            <buttonsPanel/>
         </table>
         <hbox spacing="true">
-            <button id="saveButton" caption="Save" primary="true"/>
-            <button caption="Discard" id="discardButton"/>
+            <button id="saveButton" caption="Save" primary="true" icon="PLANE"/>
+            <button caption="Discard" id="discardButton" icon="BATHTUB"/>
         </hbox>
         <label id="spacer"/>
     </layout>
