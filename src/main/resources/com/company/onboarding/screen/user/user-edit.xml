@@ -59,7 +59,10 @@
                 <comboBox id="onboardingStatusField" property="onboardingStatus"/>
                 <entityComboBox id="departmentField" property="department" optionsContainer="departmentsDc"/>
                 <dateField id="joiningDateField" property="joiningDate"/>
+            </column>
+            <column>
                 <fileStorageUpload id="pictureField" property="picture"/>
+                <image id="image" scaleMode="CONTAIN" rowspan="10" height="300px" width="300px" property="picture"/>
             </column>
         </form>
         <groupBox id="userStepBox" caption="msg://com.company.onboarding.entity/User.userStep">
