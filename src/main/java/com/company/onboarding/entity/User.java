@@ -10,6 +10,8 @@ import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.security.authentication.JmixUserDetails;
+import io.jmix.ui.Screens;
+import io.jmix.ui.screen.Screen;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -232,4 +234,6 @@ public class User implements JmixUserDetails, HasTimeZone {
     public void setTimeZoneId(String timeZoneId) {
         this.timeZoneId = timeZoneId;
     }
+
+
 }

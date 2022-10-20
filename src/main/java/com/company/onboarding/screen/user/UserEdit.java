@@ -9,6 +9,7 @@ import io.jmix.core.EntityStates;
 import io.jmix.core.security.event.SingleUserPasswordChangeEvent;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.UiComponents;
+import io.jmix.ui.UiScreenProperties;
 import io.jmix.ui.component.*;
 import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.model.CollectionPropertyContainer;
@@ -16,6 +17,8 @@ import io.jmix.ui.model.DataContext;
 import io.jmix.ui.model.InstanceContainer;
 import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.*;
+import io.jmix.ui.util.OperationResult;
+import io.jmix.ui.util.UnknownOperationResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -169,6 +172,9 @@ public class UserEdit extends StandardEditor<User> {
             user.setOnboardingStatus(OnboardingStatus.IN_PROGRESS);
         }
     }
-    
-    
+
+    @Override
+    public OperationResult close(StandardOutcome outcome) {
+        return super.close(FrameOwner.WINDOW_DISCARD_AND_CLOSE_ACTION);
+    }
 }
