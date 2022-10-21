@@ -25,7 +25,6 @@ public class Department {
     @Column(name = "NAME", nullable = false)
     @NotNull
     private String name;
-
     @Column(name = "VERSION", nullable = false)
     @Version
     private Integer version;
