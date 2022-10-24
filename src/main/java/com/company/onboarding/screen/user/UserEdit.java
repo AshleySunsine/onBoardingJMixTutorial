@@ -1,5 +1,6 @@
 package com.company.onboarding.screen.user;
 
+import com.company.onboarding.banner.HasBanner;
 import com.company.onboarding.entity.OnboardingStatus;
 import com.company.onboarding.entity.Step;
 import com.company.onboarding.entity.User;
@@ -32,7 +33,7 @@ import java.util.TimeZone;
 @UiDescriptor("user-edit.xml")
 @EditedEntityContainer("userDc")
 @Route(value = "users/edit", parentPrefix = "users")
-public class UserEdit extends StandardEditor<User> {
+public class UserEdit extends StandardEditor<User>  implements HasBanner {
 
     @Autowired
     private EntityStates entityStates;

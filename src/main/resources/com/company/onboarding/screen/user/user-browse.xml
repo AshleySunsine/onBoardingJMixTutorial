@@ -65,6 +65,7 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
             >
+                <button caption="&#1082;&#1085;&#1086;&#1087;&#1082;&#1072;" id="someButton"/>
                 <button id="createBtn" action="usersTable.create"/>
                 <button id="editBtn" action="usersTable.edit"/>
                 <button id="removeBtn" action="usersTable.remove"/>

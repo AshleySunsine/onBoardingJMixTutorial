@@ -1,7 +1,12 @@
 package com.company.onboarding.screen.user;
 
 import com.company.onboarding.entity.User;
+import com.company.onboarding.screen.labels.LabelScreen;
+import io.jmix.ui.Notifications;
+import io.jmix.ui.ScreenBuilders;
+import io.jmix.ui.Screens;
 import io.jmix.ui.UiComponents;
+import io.jmix.ui.component.Button;
 import io.jmix.ui.component.Component;
 import io.jmix.ui.component.FileStorageResource;
 import io.jmix.ui.component.Image;
@@ -17,6 +22,15 @@ public class UserBrowse extends StandardLookup<User> {
     @Autowired
     private UiComponents uiComponents;
 
+    @Autowired
+    private Screens screens;
+
+    @Autowired
+    private ScreenBuilders screenBuilders;
+
+    @Autowired
+    private Notifications notifications;
+
     @Install(to = "usersTable.picture", subject = "columnGenerator")
     private Component usersTablePictureColumnGenerator(User user) {
         if (user.getPicture() != null) {
@@ -29,5 +43,17 @@ public class UserBrowse extends StandardLookup<User> {
         } else {
             return null;
         }
+    }
+
+    @Subscribe("someButton")
+    public void onSomeButtonClick(Button.ClickEvent event) {
+        System.out.println("SomeButtom clicked!");
+        screenBuilders.screen(this)
+                .withScreenClass(LabelScreen.class)
+                .withAfterCloseListener(e -> {
+                    notifications.create().withCaption("Закрыли").show();
+                })
+                .build()
+                .show();
     }
 }

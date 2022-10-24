@@ -1,5 +1,6 @@
 package com.company.onboarding.screen.main;
 
+import com.company.onboarding.banner.HasBanner;
 import io.jmix.ui.ScreenTools;
 import io.jmix.ui.component.AppWorkArea;
 import io.jmix.ui.component.Button;
@@ -17,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @UiController("MainScreen")
 @UiDescriptor("main-screen.xml")
 @Route(path = "main", root = true)
-public class MainScreen extends Screen implements Window.HasWorkArea {
+public class MainScreen extends Screen implements Window.HasWorkArea, HasBanner {
 
     @Autowired
     private ScreenTools screenTools;

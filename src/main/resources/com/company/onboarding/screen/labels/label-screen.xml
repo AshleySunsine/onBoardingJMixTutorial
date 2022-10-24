@@ -1,0 +1,8 @@
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="AAAA-screen">
+    <dialogMode forceDialog="true"/>
+    <layout>
+        <label id="messageLabel" value="A message" stylename="h1"/>
+        <button id="closeBtn" caption="Close"/>
+    </layout>
+</window>

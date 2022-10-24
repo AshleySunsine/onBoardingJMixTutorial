@@ -1,5 +1,6 @@
 package com.company.onboarding.screen.login;
 
+import com.company.onboarding.banner.HasBanner;
 import io.jmix.core.MessageTools;
 import io.jmix.core.Messages;
 import io.jmix.securityui.authentication.AuthDetails;
@@ -24,7 +25,7 @@ import java.util.Locale;
 @UiController("LoginScreen")
 @UiDescriptor("login-screen.xml")
 @Route(path = "login", root = true)
-public class LoginScreen extends Screen {
+public class LoginScreen extends Screen implements HasBanner {
 
     @Autowired
     private TextField<String> usernameField;
